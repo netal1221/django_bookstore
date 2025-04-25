@@ -1,0 +1,72 @@
+[
+    {
+        "model": "books.book",
+        "pk": 1,
+        "fields": {
+            "title": "Book One",
+            "author": "Author One",
+            "description": "Description for Book One",
+            "price": 19.99,
+            "cover_image": "",
+            "stock": 10,
+            "created_at": "2024-01-01T00:00:00Z",
+            "updated_at": "2024-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "books.book",
+        "pk": 2,
+        "fields": {
+            "title": "Book Two",
+            "author": "Author Two",
+            "description": "Description for Book Two",
+            "price": 29.99,
+            "cover_image": "",
+            "stock": 8,
+            "created_at": "2024-01-02T00:00:00Z",
+            "updated_at": "2024-01-02T00:00:00Z"
+        }
+    },
+    {
+        "model": "books.book",
+        "pk": 3,
+        "fields": {
+            "title": "Book Three",
+            "author": "Author Three",
+            "description": "Description for Book Three",
+            "price": 39.99,
+            "cover_image": "",
+            "stock": 6,
+            "created_at": "2024-01-03T00:00:00Z",
+            "updated_at": "2024-01-03T00:00:00Z"
+        }
+    },
+    {
+        "model": "books.book",
+        "pk": 4,
+        "fields": {
+            "title": "Book Four",
+            "author": "Author Four",
+            "description": "Description for Book Four",
+            "price": 49.99,
+            "cover_image": "",
+            "stock": 4,
+            "created_at": "2024-01-04T00:00:00Z",
+            "updated_at": "2024-01-04T00:00:00Z"
+        }
+    },
+    {
+        "model": "books.book",
+        "pk": 5,
+        "fields": {
+            "title": "Book Five",
+            "author": "Author Five",
+            "description": "Description for Book Five",
+            "price": 59.99,
+            "cover_image": "",
+            "stock": 2,
+            "created_at": "2024-01-05T00:00:00Z",
+            "updated_at": "2024-01-05T00:00:00Z"
+        }
+    }
+]

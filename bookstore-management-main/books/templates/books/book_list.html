@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %}Book List{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Our Books</h1>
+
+<div class="row">
+    {% for book in books %}
+    <div class="col-md-4 mb-4">
+        <div class="card book-card">
+            {% if book.cover_image %}
+            <img src="{{ book.cover_image.url }}" class="card-img-top" alt="{{ book.title }}">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ book.title }}</h5>
+                <p class="card-text">by {{ book.author }}</p>
+                <p class="card-text">${{ book.price }}</p>
+                <a href="{% url 'book-detail' book.pk %}" class="btn btn-primary">View Details</a>
+                {% if user.is_authenticated %}
+                <form method="post" action="{% url 'add-to-cart' book.pk %}" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success">Add to Cart</button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <p>No books available.</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

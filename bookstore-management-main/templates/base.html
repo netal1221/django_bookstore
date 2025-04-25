@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Bookstore Management{% endblock %}</title>
+  
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  <link rel="icon" href="{% static 'images/favicon.ico' %}" />
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container navbar">
+      <h1 style="margin: 0; font-size: 1.8rem; font-weight: 700; color: var(--light);">
+        📚 Bookstore
+      </h1>
+      <nav class="nav-links">
+        <a href="{% url 'book-list' %}">Books</a>
+        <a href="{% url 'cart' %}">Cart</a>
+        {% if user.is_authenticated %}
+          <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+          <a href="{% url 'login' %}">Login</a>
+          <a href="{% url 'register' %}">Register</a>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    {% if messages %}
+      <div class="mb-3">
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <!-- Optional Footer (Recommended for Pro look) -->
+  <footer style="text-align: center; padding: 2rem 0; color: var(--gray); font-size: 0.9rem;">
+    &copy; {{ year|default:"2025" }} Bookstore. All rights reserved.
+  </footer>
+</body>
+</html>

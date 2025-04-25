@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %}{% if object %}Edit {{ object.title }}{% else %}Add New Book{% endif %}{% endblock %}
+
+{% block content %}
+<h1>{% if object %}Edit {{ object.title }}{% else %}Add New Book{% endif %}</h1>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title" value="{{ form.title.value|default_if_none:'' }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="author" class="form-label">Author</label>
+        <input type="text" class="form-control" id="author" name="author" value="{{ form.author.value|default_if_none:'' }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="3" required>{{ form.description.value|default_if_none:'' }}</textarea>
+    </div>
+    <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" step="0.01" class="form-control" id="price" name="price" value="{{ form.price.value|default_if_none:'' }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="stock" class="form-label">Stock</label>
+        <input type="number" class="form-control" id="stock" name="stock" value="{{ form.stock.value|default_if_none:'0' }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="cover_image" class="form-label">Cover Image</label>
+        <input type="file" class="form-control" id="cover_image" name="cover_image">
+        {% if form.instance.cover_image %}
+        <p>Current: <a href="{{ form.instance.cover_image.url }}">{{ form.instance.cover_image.name }}</a></p>
+        {% endif %}
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="{% url 'book-list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
